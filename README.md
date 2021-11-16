@@ -12,3 +12,5 @@ I guess you don't need any instruction to the app functionality.
 - Develop Flutter Mobile app.
 - Add more recipes.
 - Maybe change app name???
+- Auto size selected recipe bootstrap cards.
+- Not that life changing edits in Create Recipe function.

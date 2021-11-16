@@ -169,6 +169,14 @@ body {
     background-color: var(--theme-white)
 }
 
-body::-webkit-scrollbar {
-    display: none;
+::-webkit-scrollbar {
+  width: 0.7vw;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: var(--theme-white);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--theme-color);
 }

@@ -22,7 +22,7 @@ function createWindow () {
       height: 900,
       title: 'Recette',
       hasShadow: true,
-      icon: 'resources/icon.png',
+      icon: 'resources/icon.ico',
       /* Remove if debug */
       devTools: false,
       webgl: false,
@@ -46,7 +46,7 @@ function createWindow () {
     globalShortcut.register('Ctrl+F', () => {
       fullscreen = !fullscreen;
       win.setFullScreen(fullscreen);
-    })
+    });
 
     //win.webContents.openDevTools()
 }
