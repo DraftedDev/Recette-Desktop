@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+
+    <!-- Bootstrap -->
+    <script src="jquery\jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="bootstrap\bootstrap.min.css">
+
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>Recette</title>
+  </head>
+  <body>
+
+    <script src="jquery\jquery-3.6.0.js"></script>
+    <script src="bootstrap\bootstrap.bundle.min.js"></script>
+
+    <!-- Application Content Start -->
+
+    <nav class="navbar navbar-expand-sm navbar-light bg-nav sticky-top" id="navbar">
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mx-auto">
+
+          <li class="nav-item active">
+            <button id="recipe-button">
+              Search
+            </button>
+          </li>
+
+          <input type="text" id="recipe-input">
+
+          <li class="nav-item active">
+            <button id="create-button">
+              New Recipe
+            </button>
+          </li>
+
+        </ul>
+      </div>
+    </nav>
+
+    <br>
+    <div id="content">
+
+      <!-- Catalog Card:
+        <div class="card text-center catalog-card">
+          <div class="card-body">
+            <h1 class="card-title">EMPTY TITLE</h1>
+            <hr class="my-3">
+            <p class="card-text">EMPTY BODY</p>
+          </div>
+        </div>
+      -->
+
+    </div>
+
+    <!-- Application Content End -->
+
+    <script src="js/recipe.js"></script>
+    <script src="js/renderer.js"></script>
+
+  </body>
+</html>

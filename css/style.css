@@ -1,0 +1,174 @@
+/* Variables */
+:root {
+    --theme-color: rgb(248, 134, 134);
+    --theme-font: rgb(58, 57, 57);
+    --theme-white: #f7f0f0;
+}
+
+/* CSS */
+#navbar {
+    padding: 2vh;
+    font-size: 160%;
+}
+
+#navbar .nav-item {
+    margin-right: 2vh;
+    margin-left: 2vh;
+}
+
+#recipe-input {
+    width: 40vw;
+    border-style: solid;
+    border-width: 0.1vw;
+    border-color: var(--theme-color);
+    color: var(--theme-font);
+    background-color: #f3eded;
+}
+
+#recipe-button {
+    border: 0;
+    height: 5vh;
+    color: var(--theme-font);
+    background-color: #f3eded;
+}
+
+#create-button {
+    height: 4.9vh;
+    border: 0;
+    width: 11vw;
+    font-size: 80%;
+}
+
+
+/* Classes */
+.bg-nav {
+    background-color: var(--theme-color);
+}
+
+.bg-light-error {
+    background-color: rgb(250, 184, 184);
+}
+
+.catalog-card {
+    width: 90%;
+    height: 25vh;
+    position: relative;
+    left: 5%;
+    font-size: 155%;
+}
+
+/* Use h-<tiny|little|normal|big|huge|gigantic> */
+.recipe-card {
+    width: 90%;
+    height: 25vh;
+    position: relative;
+    left: 5%;
+    font-size: 165%;
+    text-align: center;
+}
+.recipe-card h1 {
+    font-size: 200%;
+}
+
+/* height classes */
+.h-mini-nano {
+    height: 5vh;
+}
+.h-mini-mini {
+    height: 15vh;
+}
+.h-nano {
+    height: 25vh;
+}
+.h-mini {
+    height: 45vh;
+}
+.h-bigger-nano {
+    height: 60vh;
+}
+.h-bigger-mini {
+    height: 90vh;
+}
+.h-tiny {
+    height: 200vh;
+}
+.h-little {
+    height: 250vh;
+}
+.h-normal {
+    height: 300vh;
+}
+.h-big {
+    height: 350vh;
+}
+.h-huge {
+    height: 400vh;
+}
+.h-gigantic {
+    height: 500vh;
+}
+/* special almost infinite height, TODO: set auto height in selectRecipe() */
+.h-titanic {
+    height: 5000vh;
+}
+
+/* font size classes */
+.font-default {
+    font-size: 150%;
+}
+.font-h1 {
+    font-size: 330%;
+}
+.font-h2 {
+    font-size: 270%;
+}
+.font-h3 {
+    font-size: 200%;
+}
+
+/* width classes */
+.h-nano {
+    height: 7vh;
+}
+.h-mini {
+    height: 15vh;
+}
+.w-tiny {
+    width: 20vw;
+}
+.w-little {
+    width: 30vw;
+}
+.w-normal {
+    width: 40vw;
+}
+.w-big {
+    width: 50vw;
+}
+.w-huge {
+    width: 65vw;
+}
+.w-gigantic {
+    width: 75vw;
+}
+
+
+.align {
+    text-align: center;
+}
+
+/* Default HTMl elements */
+
+@font-face {
+    font-family: "Quicksand";
+    src: url("../font/Quicksand/Quicksand-VariableFont_wght.ttf");
+}
+
+body {
+    font-family: "Quicksand";
+    background-color: var(--theme-white)
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
