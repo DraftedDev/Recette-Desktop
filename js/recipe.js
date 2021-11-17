@@ -92,8 +92,8 @@ function initializePreMadeRecipes() {
         new Recipe(
         'Cheese and herb bread', 
         'French bread with herbs and cheese.', 
-        ['french stuff', 'herb', 'cheese'],
-        ['test', 'tstrtdfdtstrtdfd'],
+        [],
+        [],
         ),
 
         //Piraschki
