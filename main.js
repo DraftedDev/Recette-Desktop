@@ -1,5 +1,10 @@
 const { app, BrowserWindow, globalShortcut } = require('electron');
 const electronStore = require('electron-store');
+
+//remote module
+const remoteMain = require("@electron/remote/main");
+remoteMain.initialize();
+
 //V8 JS engine code cache
 require('v8-compile-cache');
 
@@ -31,10 +36,14 @@ function createWindow () {
         spellcheck: false,
         contextIsolation: false,
         nodeIntegration: true,
+        nodeIntegrationInWorker: true,
         enableRemoteModule: true,
       },
     })
     
+    //remote module
+    remoteMain.enable(win.webContents);
+
     win.removeMenu();
     win.loadFile('index.html');
 

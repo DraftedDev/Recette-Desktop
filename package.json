@@ -12,6 +12,8 @@
     "electron": "^15.3.0"
   },
   "dependencies": {
+    "@electron/remote": "^2.0.1",
+    "electron-alert": "^0.1.19",
     "electron-store": "^8.0.1",
     "v8-compile-cache": "^2.3.0"
   }

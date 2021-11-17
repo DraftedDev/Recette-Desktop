@@ -169,6 +169,7 @@ body {
     background-color: var(--theme-white)
 }
 
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 0.7vw;
 }
@@ -179,4 +180,9 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: var(--theme-color);
+}
+
+/* input field color */
+input[type=text]:focus{
+    outline: 0 solid rgb(29, 28, 28);
 }

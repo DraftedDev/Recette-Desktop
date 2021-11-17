@@ -15,7 +15,6 @@ createBtn.onclick = () => onCreateClick()
 document.onclick = (ev) => onDocumentClick(ev)
 
 
-
 function onDocumentClick(ev) {
     
     //check if element is recipe
@@ -110,13 +109,20 @@ function onGetRecipeClick() {
     })
     //if search was unsuccessful
     if(content.innerHTML === '') {
-        content.innerHTML +=
-        `<br><div class="card text-center catalog-card bg-light-error">\
-        <div class="card-body">\
-        <h1 class="card-title">Could not find "${recipeInput.value}" !</h1>\
-        <hr class="my-3">\
-        <p class="card-text">Ensure you typed everything correctly.</p>\
-        </div></div>`;
+
+        const Alert = require("electron-alert");
+
+        let alert = new Alert();
+        
+        let swalOptions = {
+            title: "Recipe not found!",
+            text: `Could not find recipe "${recipeInput.value}"`,
+            icon: "error"
+        };
+        
+        alert.fireFrameless(swalOptions, null, true, false);
+
+        initCatalog();
     }
 }
 
@@ -165,6 +171,25 @@ function onCreateClick() {
         const instruction = document.querySelector('#createInstruction').value.split('\n');
         const ingredients = document.querySelector('#createIngredients').value.split('\n');
 
+        //check if input fields are empty
+        if(description.length === 0 || name.length === 0 || ingredients.length === 0 || instruction.length === 0) {
+            
+            const Alert = require("electron-alert");
+
+            let alert = new Alert();
+            
+            let swalOptions = {
+                title: "Empty Input Fields",
+                text: "Please don't let any input fields empty!",
+                icon: "error"
+            };
+            
+            alert.fireFrameless(swalOptions, null, true, false);
+
+            initCatalog();
+            return;
+        }
+
         const newRecipe = new Recipe(name, description, ingredients, instruction);
         saveRecipe(newRecipe);
         //back to main menu
@@ -179,7 +204,7 @@ function onCreateClick() {
 
 function initCatalog() {
     const recipes = Object.keys(RECIPE_DB.store).sort()
-
+    content.innerHTML = '';
     recipes.forEach(el => {
         const recipe = RECIPE_DB.get(el)
         content.innerHTML += 
