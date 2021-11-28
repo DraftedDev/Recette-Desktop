@@ -29,14 +29,12 @@ function createWindow () {
       hasShadow: true,
       icon: 'resources/icon.ico',
       /* Remove if debug */
-      devTools: false,
       webgl: false,
       enableWebSQL: false,
       webPreferences: {
         spellcheck: false,
         contextIsolation: false,
         nodeIntegration: true,
-        nodeIntegrationInWorker: true,
         enableRemoteModule: true,
       },
     })
@@ -57,5 +55,9 @@ function createWindow () {
       win.setFullScreen(fullscreen);
     });
 
+
+    /*
+    ONLY ENABLE IF DEVELOPER/DEBUGGING!!!
+    */
     //win.webContents.openDevTools()
 }

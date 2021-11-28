@@ -29,7 +29,7 @@ function selectRecipe(recipeName) {
     recipe = RECIPE_DB.get(recipeName);
 
     content.innerHTML = 
-    `<br><div class="card text-center recipe-card h-titanic">
+    `<br><div class="card text-center recipe-card">
     <div class="card-body">
       <h1 class="card-title">${recipe['name']}</h1>
       <h4>${recipe['description']}</h4>
@@ -41,10 +41,45 @@ function selectRecipe(recipeName) {
       <hr class="my-3">
 
       <h1>Instruction:</h1>
-      ${getInstruction()}<br>
+      ${getInstruction()}<br><br><br>
+
+      <button class="btn bg-light-error h-mini-nano w-nano font-mini align" id="recipeDeleteBtn">Delete Recipe</button>
+      <button class="btn bg-warning h-mini-nano w-nano font-mini align" id="recipeEditBtn">Edit Recipe</button>
 
     </div>
     </div><br><br>`;
+
+
+    //delete recipe
+    const delBtn = document.querySelector('#recipeDeleteBtn');
+    delBtn.onclick = () => {
+        //custom alert
+        const Alert = require("electron-alert");
+
+        let alert = new Alert();
+        
+        let swalOptions = {
+            title: 'Are you sure you want to delete this recipe?',
+            text: 'This cannot be undone!',
+            icon: "warning",
+            showCancelButton: true
+        };
+        
+        alert.fireFrameless(swalOptions, null, true, false).then((result) => {
+            if (result.value) {
+                // confirmed
+                RECIPE_DB.delete(recipe['name'])
+                initCatalog();
+                return;
+            }
+        })
+    };
+
+    //edit recipe
+    const editBtn = document.querySelector('#recipeEditBtn');
+    editBtn.onclick = () => {
+        editRecipe(recipe);
+    };
 
     //scroll up again
     window.scrollTo(0, 0);
@@ -72,6 +107,99 @@ function selectRecipe(recipeName) {
         return htmlString;
     }
 
+}
+
+//edit recipe
+function editRecipe(recipe) {
+    content.innerHTML = 
+    `<br><div class="card text-center recipe-card">
+    <div class="card-body">
+      <h1 class="card-title">Edit Recipe</h1>
+      <hr class="my-3"><br><br>
+
+      <h2>Name</h2>
+      <input type="text" class="w-normal" id="createName" value="${recipe['name']}" disabled></input>
+      <br>
+      <br>
+      <h3>Description</h3>
+      <input type="text" class="w-big" id="createDescription" value="${recipe['description']}"></input>
+      <br><br>
+
+      <hr class="my-3">
+
+      <h2>Ingredients</h2>
+      <textarea class="w-huge h-bigger-nano" id="createIngredients">${getIngredients()}</textarea>
+      <br><br>
+
+      <hr class="my-1"><br>
+
+      <h2>Instruction</h2>
+      <textarea class="w-huge h-bigger-mini" id="createInstruction">${getInstruction()}</textarea>
+      <br><br><br>
+
+      <hr>
+      <button class="border h-mini-nano w-mini" id="createBtn">Save Recipe</button>
+      <hr>
+
+      <br><br>
+
+    </div>
+    </div><br><br>`;
+
+    function getInstruction() {
+        let htmlString = '';
+
+        for(instr in recipe['instruction']) {
+            htmlString += recipe['instruction'][instr] + '\n';
+        }
+
+        return htmlString;
+    }
+
+    function getIngredients() {
+        let htmlString = '';
+
+        for(instr in recipe['ingredients']) {
+            htmlString += recipe['ingredients'][instr] + '\n';
+        }
+
+        return htmlString;
+    }
+
+    const createBtn = document.querySelector('#createBtn');
+    createBtn.onclick = () => {
+        const description = document.querySelector('#createDescription').value;
+        const name = document.querySelector('#createName').value;
+        const instruction = document.querySelector('#createInstruction').value.split('\n');
+        const ingredients = document.querySelector('#createIngredients').value.split('\n');
+
+        //check if input fields are empty
+        if(description.length === 0 || name.length === 0 || ingredients.length === 0 || instruction.length === 0) {
+            
+            const Alert = require("electron-alert");
+
+            let alert = new Alert();
+            
+            let swalOptions = {
+                title: "Empty Input Fields",
+                text: "Please don't let any input fields empty!",
+                icon: "error"
+            };
+            
+            alert.fireFrameless(swalOptions, null, true, false);
+
+            initCatalog();
+            return;
+        }
+
+        const newRecipe = new Recipe(name, description, ingredients, instruction);
+        saveRecipe(newRecipe);
+        //back to main menu
+        initCatalog();
+    };
+
+    //scroll up again
+    window.scrollTo(0, 0);
 }
 
 //search recipe
@@ -130,7 +258,7 @@ function onGetRecipeClick() {
 function onCreateClick() {
 
     content.innerHTML = 
-    `<br><div class="card text-center recipe-card h-little">
+    `<br><div class="card text-center recipe-card">
     <div class="card-body">
       <h1 class="card-title">Create a new recipe</h1>
       <hr class="my-3"><br><br>
@@ -218,5 +346,6 @@ function initCatalog() {
         `</div>`
         ;
     });
+    content.innerHTML += '<br><br>';
 
 }

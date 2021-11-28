@@ -60,7 +60,6 @@
 /* Use h-<tiny|little|normal|big|huge|gigantic> */
 .recipe-card {
     width: 90%;
-    height: 25vh;
     position: relative;
     left: 5%;
     font-size: 165%;
@@ -107,10 +106,6 @@
 .h-gigantic {
     height: 500vh;
 }
-/* special almost infinite height, TODO: set auto height in selectRecipe() */
-.h-titanic {
-    height: 5000vh;
-}
 
 /* font size classes */
 .font-default {
@@ -152,6 +147,15 @@
     width: 75vw;
 }
 
+.font-mini {
+    font-size: 90%
+}
+.font-big {
+    font-size: 150%
+}
+.font-bigger {
+    font-size: 200%
+}
 
 .align {
     text-align: center;
